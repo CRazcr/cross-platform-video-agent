@@ -1,0 +1,105 @@
+{
+  "douyin": {
+    "name": "抖音",
+    "key": "douyin",
+    "description": "短视频平台，以快节奏、强情绪、高密度的内容为主",
+    "duration_range": {
+      "min_seconds": 15,
+      "max_seconds": 180,
+      "optimal_seconds": 45
+    },
+    "tone_keywords": ["快节奏", "强情绪", "钩子前置", "反转", "口语化", "网络热词"],
+    "title_structure": {
+      "patterns": [
+        "悬念反问型：{核心问题}？答案让你意想不到！",
+        "数字罗列型：{N}个{领域}误区，第{N}个你一定中过！",
+        "结果前置型：做了{行为}之后，{惊人结果}",
+        "身份标签型：{人群标签}必看！{核心卖点}"
+      ],
+      "max_length": 50,
+      "require_hashtags_in_title": true
+    },
+    "content_rules": {
+      "golden_3_seconds": "前3秒必须有视觉冲击或悬念钩子",
+      "rhythm": "每5-8秒一个信息点或转折，保持快节奏",
+      "ending": "引导关注、点赞、评论，预告下期内容",
+      "bgm_style": "卡点、流行、高能量"
+    },
+    "hot_hashtags_examples": ["#涨知识", "#干货分享", "#每天一个小技巧", "#女生必看", "#男生必看", "#打工人", "#学生党"],
+    "publish_time": {
+      "best_times": ["12:00-13:00", "18:00-19:00", "20:00-22:00"],
+      "best_days": ["周一至周日全天"],
+      "note": "工作日午休和晚间流量高峰，周末全天均可"
+    },
+    "audience_profile": "18-45岁泛人群，偏好轻松娱乐、实用技巧类内容"
+  },
+  "shipinhao": {
+    "name": "视频号",
+    "key": "shipinhao",
+    "description": "微信生态短视频平台，基于熟人社交传播，内容偏真实感和信任感",
+    "duration_range": {
+      "min_seconds": 30,
+      "max_seconds": 300,
+      "optimal_seconds": 90
+    },
+    "tone_keywords": ["真实感", "信任感", "娓娓道来", "分享感", "实用", "温暖"],
+    "title_structure": {
+      "patterns": [
+        "经验分享型：做了{N}年{身份}，总结了这些{领域}经验",
+        "问题解决型：{痛点问题}？试试这个方法",
+        "观点陈述型：关于{话题}，我想说几句大实话",
+        "教程指南型：手把手教你{技能/方法}，建议收藏"
+      ],
+      "max_length": 40,
+      "require_hashtags_in_title": false
+    },
+    "content_rules": {
+      "opening": "以真实经历或场景引入，建立信任感",
+      "rhythm": "娓娓道来，不刻意追求快节奏，重在内容价值",
+      "ending": "引导转发到朋友圈、点赞、收藏，强调实用性",
+      "bgm_style": "舒缓、温暖、轻音乐"
+    },
+    "hot_hashtags_examples": ["#实用技巧", "#生活小窍门", "#育儿经验", "#职场干货", "#健康科普"],
+    "publish_time": {
+      "best_times": ["07:00-08:00", "12:00-13:00", "21:00-22:00"],
+      "best_days": ["周一至周五"],
+      "note": "早间通勤、午休、晚间睡前是视频号流量高峰"
+    },
+    "audience_profile": "25-55岁微信用户，偏好真实可信、实用性强的内容，重视社交关系推荐"
+  },
+  "bilibili": {
+    "name": "B站",
+    "key": "bilibili",
+    "description": "中长视频内容社区，用户偏好深度、专业、有信息量的内容",
+    "duration_range": {
+      "min_seconds": 60,
+      "max_seconds": 900,
+      "optimal_seconds": 300
+    },
+    "tone_keywords": ["深度", "专业", "硬核", "数据支撑", "逻辑严密", "弹幕互动", "社区梗"],
+    "title_structure": {
+      "patterns": [
+        "硬核标签型：【硬核科普】{主题}的底层逻辑",
+        "挑战实测型：【实测】花了{N}小时/天，告诉你{结论}",
+        "深度解读型：关于{话题}，你可能被误导了很多年",
+        "系列标识型：【{系列名}】第{N}期：{本期主题}"
+      ],
+      "max_length": 60,
+      "require_hashtags_in_title": false
+    },
+    "content_rules": {
+      "opening": "允许15-30秒铺垫，用数据或故事引入，建立专业感",
+      "rhythm": "段落式推进，每段讲透一个观点，允许适当展开",
+      "interaction": "设计弹幕互动点，引导一键三连",
+      "ending": "总结要点，引导评论讨论，预告下期选题",
+      "bgm_style": "科技感、轻电子、纪录片风格"
+    },
+    "hot_hashtags_examples": ["#硬核科普", "#涨知识", "#数码测评", "#学习", "#干货", "#科普", "#测评"],
+    "publish_time": {
+      "best_times": ["12:00-13:00", "18:00-20:00", "10:00-12:00"],
+      "best_days": ["周五", "周六", "周日"],
+      "note": "B站用户周末活跃度显著高于工作日，周五晚是黄金发布窗口"
+    },
+    "audience_profile": "16-30岁Z世代，偏好深度内容、二次元文化、科技数码、学习成长类内容"
+  }
+}
