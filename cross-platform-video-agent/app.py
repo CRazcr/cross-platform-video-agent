@@ -25,6 +25,21 @@ st.markdown("""
 <style>
     /* ── 全局字体与背景 ── */
     :root {
+        --bg-primary: #e8f4fd;
+        --bg-secondary: #f5f9ff;
+        --bg-card: #ffffff;
+        --accent: #667eea;
+        --accent-light: #8b5cf6;
+        --accent-glow: rgba(102,126,234,0.15);
+        --text-primary: #1a2a3a;
+        --text-secondary: #5a6a7a;
+        --border: rgba(100,120,180,0.12);
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+    }
+
+    [data-theme="dark"] {
         --bg-primary: #0f1117;
         --bg-secondary: #161b27;
         --bg-card: #1e2436;
@@ -34,35 +49,20 @@ st.markdown("""
         --text-primary: #f1f5f9;
         --text-secondary: #94a3b8;
         --border: rgba(255,255,255,0.08);
-        --success: #10b981;
-        --warning: #f59e0b;
-        --danger: #ef4444;
     }
 
-    [data-theme="light"] {
-        --bg-primary: #f8fafc;
-        --bg-secondary: #ffffff;
-        --bg-card: #ffffff;
-        --accent: #4f46e5;
-        --accent-light: #6366f1;
-        --accent-glow: rgba(79,70,229,0.15);
-        --text-primary: #0f172a;
-        --text-secondary: #475569;
-        --border: rgba(0,0,0,0.06);
-    }
-
-    html, body, .stApp { background: var(--bg-primary); color: var(--text-primary); }
+    html, body, .stApp { background: #e8f4fd; color: #1a2a3a; }
 
     /* ── 顶部渐变横幅 ── */
     .hero {
-        background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4f46e5 100%);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
         border-radius: 18px;
         padding: 2.5rem 2rem 2rem;
         margin-bottom: 1.8rem;
         text-align: center;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 8px 32px rgba(79,70,229,0.35);
+        box-shadow: 0 8px 32px rgba(102,126,234,0.35);
     }
     .hero::before {
         content: "";
@@ -183,7 +183,7 @@ st.markdown("""
         font-size: 0.88rem;
     }
     .comparison-table th {
-        background: linear-gradient(135deg, #4f46e5, #6366f1);
+        background: linear-gradient(135deg, #667eea, #764ba2);
         color: white;
         padding: 10px 14px;
         font-weight: 700;
@@ -550,7 +550,7 @@ with tab_guide:
 st.markdown(
     "<div style='text-align:center;color:#475569;font-size:0.8rem;padding:1rem 0;'>"
     "🎬 跨平台短视频脚本适配与优化智能体 · Powered by DeepSeek · "
-    "<a href='https://github.com/CRazcr/cross-platform-video-agent' target='_blank' style='color:#6366f1;'>GitHub</a>"
+    "<a href='https://github.com/CRazcr/cross-platform-video-agent' target='_blank' style='color:#667eea;'>GitHub</a>"
     "</div>",
     unsafe_allow_html=True,
 )
