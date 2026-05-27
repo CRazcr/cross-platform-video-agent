@@ -465,7 +465,7 @@ with tab_input:
                         row.append(d.get(p.get("platform", ""), ""))
                     rows.append(row)
                 df = pd.DataFrame(rows, columns=headers)
-                st.dataframe(df, use_container_width=True, hide_index=True, use_container_width=True)
+                st.dataframe(df, use_container_width=True, hide_index=True)
 
             summary = comparison.get("summary", "")
             if summary:
