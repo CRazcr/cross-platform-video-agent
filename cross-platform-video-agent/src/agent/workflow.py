@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from typing import Any
 
 from ..llm.client import get_llm_client
+from ..llm.image_gen import get_image_gen_client
 from ..platforms.base import PlatformRule
 from ..platforms.douyin import DouyinAdapter
 from ..platforms.shipinhao import ShipinhaoAdapter
@@ -47,8 +48,10 @@ def run_workflow(
     target_platforms: list[str],
     options: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
+    options = options or {}
     task_id = str(uuid.uuid4())
     client = get_llm_client()
+    generate_images = options.get("generate_images", False)
     adapters: dict[str, PlatformAdapter] = {
         pk: _build_adapter(pk) for pk in target_platforms
     }
@@ -63,13 +66,22 @@ def run_workflow(
         script_data = _step_generate_script(
             client, adapter, creative_analysis, content
         )
-        platform_results.append(
-            {
-                "platform": pk,
-                "platform_name": adapter.rule.name,
-                "script": script_data.get("script", script_data),
-            }
-        )
+        plat_result = {
+            "platform": pk,
+            "platform_name": adapter.rule.name,
+            "script": script_data.get("script", script_data),
+        }
+
+        if generate_images:
+            logger.info("[%s] Step 2b: 为 %s 生成封面图", task_id, pk)
+            cover_b64 = _step_generate_cover(
+                creative_analysis.get("core_theme", ""),
+                plat_result["script"].get("title", ""),
+                adapter.rule.key,
+            )
+            plat_result["cover_image"] = cover_b64
+
+        platform_results.append(plat_result)
 
     logger.info("[%s] Step 3: 平台差异对比", task_id)
     comparison = _step_compare_platforms(client, platform_results)
@@ -152,3 +164,21 @@ def _step_compare_platforms(
         return parse_json_response(raw)
     except Exception:
         return {"differences": [], "summary": "对比分析生成失败"}
+
+
+def _step_generate_cover(
+    theme: str,
+    title: str,
+    platform_key: str,
+) -> str:
+    img_client = get_image_gen_client()
+    style_map = {
+        "douyin": "抖音风格：大胆撞色、高对比度、悬念感强、适合短视频平台",
+        "shipinhao": "视频号风格：温暖真实、信任感高、适合中长内容",
+        "bilibili": "B站风格：科技感、二次元元素、专业硬核、适合深度内容",
+    }
+    style = style_map.get(platform_key, "电影感")
+    return img_client.generate_cover(
+        script_title=title,
+        content_theme=f"{theme}，{style}",
+    )
